@@ -3,6 +3,7 @@ namespace Pandora3\Libs\Time;
 
 use DateInterval;
 use DateTimeZone;
+use DateTimeInterface;
 
 /**
  * @property-read int $year
@@ -26,7 +27,7 @@ class DateTime extends \DateTimeImmutable {
 			$timezone = new DateTimeZone($timezone);
         }
 
-		if (!is_object($time) || !($time instanceof \DateTimeInterface)) {
+		if (!is_object($time) || !($time instanceof DateTimeInterface)) {
 			$time = new \DateTime($time);
 		}
 		parent::__construct($time->format(self::FormatMysql), $timezone);
@@ -168,7 +169,7 @@ class DateTime extends \DateTimeImmutable {
 	 * @return string
 	 */
 	public static function convert($date, string $format): string {
-		if (!($date instanceof \DateTimeInterface)) {
+		if (!($date instanceof DateTimeInterface)) {
 			$date = self::createFromFormat(self::FormatMysql, $date);
 		}
 		return $date ? $date->format($format) : '';
