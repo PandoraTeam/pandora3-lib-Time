@@ -19,7 +19,7 @@ class DateTime extends \DateTimeImmutable {
 	public const FormatMysql = 'Y-m-d H:i:s';
 
 	/**
-	 * @param string|\DateTimeInterface $time
+	 * @param string|DateTimeInterface $time
 	 * @param string|DateTimeZone|null $timezone
 	 */
 	public function __construct($time = 'now', $timezone = null) {
