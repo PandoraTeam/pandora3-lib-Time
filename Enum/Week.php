@@ -1,6 +1,10 @@
 <?php
 namespace Pandora3\Libs\Time\Enum;
 
+/**
+ * Class Week
+ * @package Pandora3\Libs\Time\Enum
+ */
 class Week {
 
 	public const None = 0;

@@ -1,6 +1,10 @@
 <?php
 namespace Pandora3\Libs\Time\Enum;
 
+/**
+ * Class Month
+ * @package Pandora3\Libs\Time\Enum
+ */
 class Month {
 
 	public const None = 0;

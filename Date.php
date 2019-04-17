@@ -6,6 +6,9 @@ use DateTimeZone;
 use DateTimeInterface;
 
 /**
+ * Class Date
+ * @package Pandora3\Libs\Time
+ *
  * @property-read int $year
  * @property-read int $month
  * @property-read int $day
