@@ -19,7 +19,7 @@ use DateTimeInterface;
  */
 class DateTime extends \DateTimeImmutable {
 
-	public const FormatMysql = 'Y-m-d H:i:s';
+	const FormatMysql = 'Y-m-d H:i:s';
 
 	/**
 	 * @param string|DateTimeInterface $time

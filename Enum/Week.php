@@ -7,14 +7,14 @@ namespace Pandora3\Libs\Time\Enum;
  */
 class Week {
 
-	public const None = 0;
+	const None = 0;
 
-	public const Monday = 1;
-	public const Tuesday = 2;
-	public const Thursday = 3;
-	public const Wednesday = 4;
-	public const Friday = 5;
-	public const Saturday = 6;
-	public const Sunday = 7;
+	const Monday = 1;
+	const Tuesday = 2;
+	const Thursday = 3;
+	const Wednesday = 4;
+	const Friday = 5;
+	const Saturday = 6;
+	const Sunday = 7;
 
 }

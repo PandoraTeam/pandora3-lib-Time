@@ -7,20 +7,20 @@ namespace Pandora3\Libs\Time\Enum;
  */
 class Month {
 
-	public const None = 0;
+	const None = 0;
 
-	public const January = 1;
-	public const February = 2;
-	public const March = 3;
-	public const April = 4;
-	public const May = 5;
-	public const June = 6;
-	public const July = 7;
-	public const August = 8;
-	public const September = 9;
-	public const October = 10;
-	public const November = 11;
-	public const December = 12;
+	const January = 1;
+	const February = 2;
+	const March = 3;
+	const April = 4;
+	const May = 5;
+	const June = 6;
+	const July = 7;
+	const August = 8;
+	const September = 9;
+	const October = 10;
+	const November = 11;
+	const December = 12;
 
 	/**
 	 * @param int $month

@@ -16,7 +16,7 @@ use DateTimeInterface;
  */
 class Date extends \DateTimeImmutable {
 
-	public const FormatMysql = 'Y-m-d';
+	const FormatMysql = 'Y-m-d';
 
 	/**
 	 * @param string|DateTimeInterface $time
