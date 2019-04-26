@@ -16,6 +16,7 @@ use DateTimeInterface;
  * @property-read int $hour
  * @property-read int $minute
  * @property-read int $second
+ * @property-read Date $date
  */
 class DateTime extends \DateTimeImmutable {
 
@@ -63,6 +64,7 @@ class DateTime extends \DateTimeImmutable {
 	}
 
 	/**
+	 * @internal
 	 * @param string $property
 	 * @return mixed
 	 */
@@ -89,52 +91,59 @@ class DateTime extends \DateTimeImmutable {
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getYear(): int {
+	protected function getYear(): int {
 		return (int) $this->format('Y');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getMonth(): int {
+	protected function getMonth(): int {
 		return (int) $this->format('m');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getDay(): int {
+	protected function getDay(): int {
 		return (int) $this->format('d');
 	}
 
 	/**
+	 * @internal
 	 * Gets day of week 1 (for Monday) through 7 (for Saturday)
 	 * @return int
 	 */
-	public function getDayOfWeek(): int {
+	protected function getDayOfWeek(): int {
 		return (int) $this->format('N');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getHour(): int {
+	protected function getHour(): int {
 		return (int) $this->format('H');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getMinute(): int {
+	protected function getMinute(): int {
 		return (int) $this->format('i');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getSecond(): int {
+	protected function getSecond(): int {
 		return (int) $this->format('s');
 	}
 
@@ -161,7 +170,7 @@ class DateTime extends \DateTimeImmutable {
 		return new Date($this);
 	}
 
-    // todo: implement
+    // todo: implement (and add @property-read Time $time)
 	/* public function getTime(): Time {
 		return new Time();
 	} */

@@ -56,6 +56,7 @@ class Date extends \DateTimeImmutable {
 	}
 
 	/**
+	 * @internal
 	 * @param string $property
 	 * @return mixed
 	 */
@@ -82,31 +83,35 @@ class Date extends \DateTimeImmutable {
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getYear(): int {
+	protected function getYear(): int {
 		return (int) $this->format('Y');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getMonth(): int {
+	protected function getMonth(): int {
 		return (int) $this->format('m');
 	}
 
 	/**
+	 * @internal
 	 * @return int
 	 */
-	public function getDay(): int {
+	protected function getDay(): int {
 		return (int) $this->format('d');
 	}
 
 	/**
+	 * @internal
 	 * Gets day of week 1 (for Monday) through 7 (for Saturday)
 	 * @return int
 	 */
-	public function getDayOfWeek(): int {
+	protected function getDayOfWeek(): int {
 		return (int) $this->format('N');
 	}
 
