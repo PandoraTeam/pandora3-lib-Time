@@ -28,7 +28,7 @@ class Month {
 	 * @return int
 	 */
 	public static function numberOfDays(int $month, $year = null): int {
-		if ($year === null) {
+		if (is_null($year)) {
 			$year = (int) date('Y');
 		}
 		return cal_days_in_month(CAL_GREGORIAN, $month, $year);
