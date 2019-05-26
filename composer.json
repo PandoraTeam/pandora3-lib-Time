@@ -1,0 +1,17 @@
+{
+	"name": "pandora3/lib-time",
+	"type": "pandora3-lib",
+	"description": "Pandora 3: Lib Time",
+	"homepage": "https://github.com/PandoraTeam/pandora3-lib-Time",
+	"authors": [
+		{
+			"name": "Petr Gostin",
+			"email": "nescafe238@gmail.com",
+			"homepage": "http://u-238.ru",
+			"role": "Developer"
+		}
+	],
+	"extra": {
+		"installer-name": "Time"
+	}
+}
