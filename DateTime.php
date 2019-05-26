@@ -4,6 +4,7 @@ namespace Pandora3\Libs\Time;
 use DateInterval;
 use DateTimeZone;
 use DateTimeInterface;
+use Pandora3\Core\Debug\Debug;
 
 /**
  * Class DateTime
@@ -34,7 +35,7 @@ class DateTime extends \DateTimeImmutable {
 		if (!is_object($time) || !($time instanceof DateTimeInterface)) {
 			$time = new \DateTime($time);
 		}
-		parent::__construct($time->format(self::FormatMysql), $timezone);
+		parent::__construct($time->format('Y-m-d H:i:s.u'), $timezone);
 	}
 
 	/**
@@ -47,7 +48,7 @@ class DateTime extends \DateTimeImmutable {
 	 * @return static
 	 */
 	public static function create($year, $month, $day, $hour = 0, $minute = 0, $second = 0): self {
-		return (new static())
+		return (new static)
 			->setDate((int) $year, (int) $month, (int) $day)
 			->setTime((int) $hour, (int) $minute, (int) $second);
 	}
@@ -55,16 +56,16 @@ class DateTime extends \DateTimeImmutable {
 	/**
 	 * @param string $format
 	 * @param string|null $time
-	 * @param DateTimeZone|null $timezone
+	 * @param string|DateTimeZone|null $timezone
 	 * @return static|null
 	 */
 	public static function createFromFormat($format, $time, DateTimeZone $timezone = null) {
-		$date = $time ? parent::createFromFormat($format, $time) : null;
+		$date = $time ? parent::createFromFormat($format, $time) : null; // todo: think
 		return $date ? new static($date, $timezone) : null;
 	}
 
 	/**
-	 * @internal
+	 * @ignore
 	 * @param string $property
 	 * @return mixed
 	 */
@@ -73,6 +74,8 @@ class DateTime extends \DateTimeImmutable {
 		if (method_exists($this, $methodName)) {
 			return $this->{$methodName}();
 		}
+		$className = static::class;
+		Debug::logException(new \Exception("Undefined property '$property' for [$className]", E_NOTICE));
 		return null;
 	}
 
@@ -172,11 +175,11 @@ class DateTime extends \DateTimeImmutable {
 
     // todo: implement (and add @property-read Time $time)
 	/* public function getTime(): Time {
-		return new Time();
+		return new Time;
 	} */
 
 	/**
-	 * @param string|static $date
+	 * @param string|DateTimeInterface|null $date
 	 * @param string $format
 	 * @return string
 	 */

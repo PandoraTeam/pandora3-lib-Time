@@ -4,6 +4,7 @@ namespace Pandora3\Libs\Time;
 use DateInterval;
 use DateTimeZone;
 use DateTimeInterface;
+use Pandora3\Core\Debug\Debug;
 
 /**
  * Class Date
@@ -40,23 +41,23 @@ class Date extends \DateTimeImmutable {
 	 * @return static
 	 */
 	public static function create($year, $month, $day): self {
-		return (new static())
+		return (new static)
 			->setDate((int) $year, (int) $month, (int) $day);
 	}
 
 	/**
 	 * @param string $format
 	 * @param string|null $time
-	 * @param DateTimeZone|null $timezone
+	 * @param string|DateTimeZone|null $timezone
 	 * @return static|null
 	 */
 	public static function createFromFormat($format, $time, $timezone = null) {
-		$date = $time ? parent::createFromFormat($format, $time) : null;
+		$date = $time ? parent::createFromFormat($format, $time) : null; // todo: think
 		return $date ? new static($date, $timezone) : null;
 	}
 
 	/**
-	 * @internal
+	 * @ignore
 	 * @param string $property
 	 * @return mixed
 	 */
@@ -65,6 +66,8 @@ class Date extends \DateTimeImmutable {
 		if (method_exists($this, $methodName)) {
 			return $this->{$methodName}();
 		}
+		$className = static::class;
+		Debug::logException(new \Exception("Undefined property '$property' for [$className]", E_NOTICE));
 		return null;
 	}
 
@@ -142,7 +145,7 @@ class Date extends \DateTimeImmutable {
 
 	/**
 	 * @param string $interval
-	 * @return bool|static
+	 * @return static
 	 */
 	public function subInterval(string $interval) {
 		$date = $this->sub(DateInterval::createFromDateString($interval));
@@ -150,7 +153,7 @@ class Date extends \DateTimeImmutable {
 	}
 
 	/**
-	 * @param nuLL|string|static $date
+	 * @param string|DateTimeInterface|null $date
 	 * @param string $format
 	 * @return string
 	 */
