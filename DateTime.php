@@ -21,6 +21,8 @@ use Pandora3\Core\Debug\Debug;
  */
 class DateTime extends \DateTimeImmutable {
 
+	use Translation;
+
 	const FormatMysql = 'Y-m-d H:i:s';
 
 	/**
@@ -62,6 +64,24 @@ class DateTime extends \DateTimeImmutable {
 	public static function createFromFormat($format, $time, DateTimeZone $timezone = null) {
 		$date = $time ? parent::createFromFormat($format, $time) : null; // todo: think
 		return $date ? new static($date, $timezone) : null;
+	}
+
+	/**
+	 * @param string $format
+	 * @return string
+	 */
+	public function format($format) {
+		return $this->formatLocalized($format, Date::getLocale());
+	}
+
+	/**
+	 * @param string $format
+	 * @param string $locale
+	 * @return string
+	 */
+	public function formatLocalized(string $format, string $locale): string {
+		$format = self::translate($format, $locale);
+		return parent::format($format);
 	}
 
 	/**

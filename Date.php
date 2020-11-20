@@ -17,7 +17,11 @@ use Pandora3\Core\Debug\Debug;
  */
 class Date extends \DateTimeImmutable {
 
+	use Translation;
+
 	const FormatMysql = 'Y-m-d';
+
+	protected static $locale = 'en';
 
 	/**
 	 * @param string|DateTimeInterface $time
@@ -54,6 +58,38 @@ class Date extends \DateTimeImmutable {
 	public static function createFromFormat($format, $time, $timezone = null) {
 		$date = $time ? parent::createFromFormat($format, $time) : null; // todo: think
 		return $date ? new static($date, $timezone) : null;
+	}
+
+	/**
+	 * @param string $locale
+	 */
+	public static function setLocale(string $locale): void {
+		self::$locale = $locale;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getLocale(): string {
+		return self::$locale;
+	}
+
+	/**
+	 * @param string $format
+	 * @return string
+	 */
+	public function format($format) {
+		return $this->formatLocalized($format, self::getLocale());
+	}
+
+	/**
+	 * @param string $format
+	 * @param string $locale
+	 * @return string
+	 */
+	public function formatLocalized(string $format, string $locale): string {
+		$format = self::translate($format, $locale);
+		return parent::format($format);
 	}
 
 	/**
